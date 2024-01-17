@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 //         borderRadius: BorderRadius.circular(10))), // optional
                 isDropdownHideUnderline: true, // optional
                 isFormValidator: true, // optional
-
+                showTwoDigits: true,
                 width: 10, // optional
                 is24format: true,
                 // selectedAmPm: _selectedAmPm, // optional
@@ -88,8 +88,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 onPressed: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
-                    TimeOfDay? date =
-                        _dateTime(_selectedAmPm, _selectedMins, _selectedHours);
+                    TimeOfDay? date = _dateTime(_selectedAmPm, _selectedMins, _selectedHours);
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         action: SnackBarAction(
