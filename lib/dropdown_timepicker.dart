@@ -260,6 +260,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
   ///min dropdown
   DropdownButtonFormField<String> minDropdown() {
     return DropdownButtonFormField<String>(
+        style: widget.textStyle,
         decoration: widget.inputDecoration ?? (widget.isDropdownHideUnderline ? removeUnderline() : null),
         isExpanded: widget.isExpanded,
         hint: Text(widget.hintMins, style: widget.hintTextStyle),
