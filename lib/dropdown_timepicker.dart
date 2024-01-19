@@ -300,6 +300,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
   ///hour dropdown
   DropdownButtonFormField<String> hourDropdown() {
     return DropdownButtonFormField<String>(
+        style: widget.textStyle,
         decoration: widget.inputDecoration ?? (widget.isDropdownHideUnderline ? removeUnderline() : null),
         hint: Text(widget.hintHours, style: widget.hintTextStyle),
         isExpanded: widget.isExpanded,
@@ -334,6 +335,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
   ///ampm dropdown
   DropdownButtonFormField<String> ampmDropdown() {
     return DropdownButtonFormField<String>(
+        style: widget.textStyle,
         decoration: widget.inputDecoration ?? (widget.isDropdownHideUnderline ? removeUnderline() : null),
         hint: Text(widget.hintAmPm, style: widget.hintTextStyle),
         isExpanded: widget.isExpanded,
