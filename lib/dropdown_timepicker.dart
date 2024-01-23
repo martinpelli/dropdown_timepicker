@@ -74,10 +74,10 @@ class DropdownTimePicker extends StatefulWidget {
   final String? selectedAmPm;
 
   ///Selected Mins between 0 to 60
-  final int? selectedMins;
+  final String? selectedMins;
 
   ///Selected Hours between 0 and 12
-  final int? selectedHours;
+  final String? selectedHours;
 
   ///Default [isDropdownHideUnderline] = false. Wrap with DropdownHideUnderline for the dropdown to hide the underline.
   final bool isDropdownHideUnderline;
@@ -140,8 +140,8 @@ class DropdownTimePicker extends StatefulWidget {
 
 class _DropdownTimePickerState extends State<DropdownTimePicker> {
   var ampmSelVal = '';
-  var minSelVal = '';
-  var hourSelVal = '';
+  String minSelVal = '';
+  String hourSelVal = '';
   int ampmsIn = 32;
   List<int> listOfHours = [];
 
@@ -151,8 +151,8 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
     listOfHours = widget.is24format ? list24Hours : listHours;
 
     ampmSelVal = widget.selectedAmPm != null ? widget.selectedAmPm.toString() : '';
-    minSelVal = widget.selectedMins != null ? widget.selectedMins.toString() : '';
-    hourSelVal = widget.selectedHours != null ? widget.selectedHours.toString() : '';
+    minSelVal = widget.selectedMins ?? '';
+    hourSelVal = widget.selectedHours ?? '';
   }
 
   ///Mins selection dropdown function
