@@ -5,7 +5,7 @@ List<int> listHours = List<int>.generate(12, (int index) => index + 1);
 List<int> list24Hours = List<int>.generate(24, (int index) => index);
 
 ///List of minutes
-List<int> listMins = List<int>.generate(60, (int index) => index);
+List<int> listMins = List<int>.generate(4, (int index) => index * 15);
 
 ///List of seconds
 List<int> seconds = List<int>.generate(60, (int index) => index);
