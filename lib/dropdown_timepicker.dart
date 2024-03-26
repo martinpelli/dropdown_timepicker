@@ -146,13 +146,10 @@ class DropdownTimePickerState extends State<DropdownTimePicker> {
   String minSelVal = '';
   String hourSelVal = '';
   int ampmsIn = 32;
-  List<int> listOfHours = [];
 
   @override
   void initState() {
     super.initState();
-    listOfHours = widget.is24format ? list24Hours : listHours;
-
     ampmSelVal = widget.selectedAmPm != null ? widget.selectedAmPm.toString() : '';
     minSelVal = widget.selectedMins ?? '';
     hourSelVal = widget.selectedHours ?? '';
@@ -319,7 +316,10 @@ class DropdownTimePickerState extends State<DropdownTimePicker> {
                   : null
               : null;
         },
-        items: (widget.startHours != null ? listOfHours.where((hour) => hour >= widget.startHours!) : listOfHours).map((item) {
+        items: (widget.startHours != null
+                ? (widget.is24format ? list24Hours : listHours).where((hour) => hour >= widget.startHours!)
+                : (widget.is24format ? list24Hours : listHours))
+            .map((item) {
           String itemToString = item.toString();
           if (widget.showTwoDigits) {
             itemToString = itemToString.length > 1 ? itemToString : "0$itemToString";
