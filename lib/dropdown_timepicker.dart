@@ -145,6 +145,8 @@ class DropdownTimePickerState extends State<DropdownTimePicker> {
   var ampmSelVal = '';
   String minSelVal = '';
   String hourSelVal = '';
+  int? startHours;
+  int? startMin;
   int ampmsIn = 32;
 
   @override
@@ -153,6 +155,18 @@ class DropdownTimePickerState extends State<DropdownTimePicker> {
     ampmSelVal = widget.selectedAmPm != null ? widget.selectedAmPm.toString() : '';
     minSelVal = widget.selectedMins ?? '';
     hourSelVal = widget.selectedHours ?? '';
+    startHours = widget.startHours;
+    startMin = widget.startMinutes;
+  }
+
+  changeStartMin(int? startMin) {
+    this.startMin = startMin;
+    setState(() {});
+  }
+
+  changeStartHours(int? startHours) {
+    this.startHours = startHours;
+    setState(() {});
   }
 
   ///Mins selection dropdown function
