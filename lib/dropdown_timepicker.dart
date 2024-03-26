@@ -138,10 +138,10 @@ class DropdownTimePicker extends StatefulWidget {
       this.hourFlex = 2});
 
   @override
-  State<DropdownTimePicker> createState() => _DropdownTimePickerState();
+  State<DropdownTimePicker> createState() => DropdownTimePickerState();
 }
 
-class _DropdownTimePickerState extends State<DropdownTimePicker> {
+class DropdownTimePickerState extends State<DropdownTimePicker> {
   var ampmSelVal = '';
   String minSelVal = '';
   String hourSelVal = '';
