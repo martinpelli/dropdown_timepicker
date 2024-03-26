@@ -21,6 +21,8 @@ class DropdownTimePicker extends StatefulWidget {
   ///Default is 1900
   final int? startHours;
 
+  final int? startMinutes;
+
   ///End hour for date picker
   ///Default is Current hour
   final int? endHours;
@@ -30,37 +32,37 @@ class DropdownTimePicker extends StatefulWidget {
   final double width;
 
   ///Return selected Am/Pm
-  ValueChanged<String?>? onChangedAmPm;
+  final ValueChanged<String?>? onChangedAmPm;
 
   ///Return selected Mins
-  ValueChanged<String?>? onChangedMins;
+  final ValueChanged<String?>? onChangedMins;
 
   ///Return selected Hours
-  ValueChanged<String?>? onChangedHours;
+  final ValueChanged<String?>? onChangedHours;
 
   ///Error message for Date
-  String errorAmPm;
+  final String errorAmPm;
 
   ///Error message for Mins
-  String errorMins;
+  final String errorMins;
 
   ///Error message for Hours
-  String errorHours;
+  final String errorHours;
 
   ///Hint for Mins drop down
   ///Default is "Mins"
-  String hintMins;
+  final String hintMins;
 
   ///Hint for Hours drop down
   ///Default is "Hours"
-  String hintHours;
+  final String hintHours;
 
   ///Hint for AmPm drop down
   ///Default is "AmPm"
-  String hintAmPm;
+  final String hintAmPm;
 
   ///Hint Textstyle for drop down
-  TextStyle? hintTextStyle;
+  final TextStyle? hintTextStyle;
 
   ///Is Form validator enabled
   ///Default is false
@@ -83,24 +85,24 @@ class DropdownTimePicker extends StatefulWidget {
   final bool isDropdownHideUnderline;
 
   /// default true
-  bool showHours;
-  bool showMins;
-  bool showAmPm;
-  bool showTwoDigits;
+  final bool showHours;
+  final bool showMins;
+  final bool showAmPm;
+  final bool showTwoDigits;
 
   /// min expanded flex
-  int minFlex;
+  final int minFlex;
 
   /// ampm expanded flex
-  int ampmFlex;
+  final int ampmFlex;
 
   /// hour expanded flex
-  int hourFlex;
+  final int hourFlex;
 
   /// is 24 format
-  bool is24format;
+  final bool is24format;
 
-  DropdownTimePicker(
+  const DropdownTimePicker(
       {super.key,
       this.textStyle,
       this.boxDecoration,
@@ -108,6 +110,7 @@ class DropdownTimePicker extends StatefulWidget {
       this.icon,
       this.startHours,
       this.endHours,
+      this.startMinutes,
       this.width = 12.0,
       this.onChangedAmPm,
       this.onChangedMins,
@@ -276,7 +279,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                   : null
               : null;
         },
-        items: listMins.map((item) {
+        items: (widget.startMinutes != null ? listMins.where((minute) => minute >= widget.startMinutes!) : listMins).map((item) {
           String itemToString = item.toString();
           if (widget.showTwoDigits) {
             itemToString = itemToString.length > 1 ? itemToString : "0$itemToString";
@@ -316,7 +319,7 @@ class _DropdownTimePickerState extends State<DropdownTimePicker> {
                   : null
               : null;
         },
-        items: listOfHours.map((item) {
+        items: (widget.startHours != null ? listOfHours.where((hour) => hour >= widget.startHours!) : listOfHours).map((item) {
           String itemToString = item.toString();
           if (widget.showTwoDigits) {
             itemToString = itemToString.length > 1 ? itemToString : "0$itemToString";
